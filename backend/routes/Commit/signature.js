@@ -1,30 +1,43 @@
 const express = require('express')
 const db = require('../../db')
-const router = express.Router()
-const {verifyToken,requireRole} = require('../../middleware/authMiddleware')
 const path = require('path')
-const upload = path.join(__dirname,'../../uploads/signature')
+const fs = require('fs')
+const uploadDir = path.join(__dirname,'../../uploads/signature')
+const router = express.Router()
+const bc = require('bcrypt')
+const {verifyToken , requireRole} = require('../../middleware/authMiddleware')
 
-router.post('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) =>{
-    try {
-        const id_member=req.user.id_member
-        const id_eva= req.params.id_eva
-        const file=req.files?.file
-        const file_name=Date.now()+path.extname(file.name)
-        await file.mv(path.join(upload,file_name))
-        const [row] = await db.query(`update tb_commit set signature=? where id_eva='${id_eva}' and id_member='${id_member}'`,[file_name])
+router.get('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
+    try{
+        const id_member = req.user.id_member
+        const id_eva = req.params.id_eva
+        const [rows] = await db.query(`select * from tb_commit where id_eva=? and id_member=?`,[id_eva,id_member])
+        res.json(rows[0])
+    }catch(err){
+        console.error("Error Get",err)
+        res.status(500).json({message:'Error Get'})
+    }
+})
+
+router.post('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
+    try{
+        const id_member = req.user.id_member
+        const id_eva = req.params.id_eva
+        const file = req.files?.file
+        const filename = Date.now() + path.extname(file.name)
+        await file.mv(path.join(uploadDir,filename))
+        await db.query(`update tb_commit set signature=? where id_eva=? and id_member=?`,[filename,id_eva,id_member])
         const [SumCommit] = await db.query(`select * from tb_commit where status_commit=? and signature!='${null}' and id_eva=?`,['y',id_eva])
-        if(SumCommit.length === 3 ){
+        if(SumCommit.length === 3){
             await db.query(`update tb_eva set status_eva=? where id_eva=?`,[3,id_eva])
         }
-        res.status(201).json({message:'Upload Sucess'})
-    } catch (error) {
-        console.error("Error Upload",error)
+        res.status(201).json({message:'Upload Success'})
+    }catch(err){
+        console.error("Error Upload",err)
         res.status(500).json({message:'Error Upload'})
     }
 })
 
-//
 router.delete('/:id_eva',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
     try{
         const id_member = req.user.id_member
@@ -37,8 +50,8 @@ router.delete('/:id_eva',verifyToken,requireRole('กรรมการประ
         }
         await db.query(`update tb_commit set signature=? where id_eva=? and id_member=?`,[null,id_eva,id_member])
         res.json({message:'Delete Success!'})
-    }catch(error){
-        console.error("Error Delete",error)
+    }catch(err){
+        console.error("Error Delete",err)
         res.status(500).json({message:'Error Delete'})
     }
 })
