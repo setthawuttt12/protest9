@@ -21,9 +21,9 @@ router.put('/', verifyToken, requireRole('ผู้รับการประ�
         const { first_name, last_name, email, username, password, role } = req.body
         if (password && password.trim()) {
             const hash = await bc.hash(password, 10)
-            await db.query(`update tb_member set first_name=?,last_name=?,email=?,username=?,password=?,role=? where id_member='${id_member}'`, [first_name, last_name, email, username, hash, role])
+            await db.query(`update tb_member set first_name=?,last_name=?,email=?,username=?,password=?,role=? where id_member='${id_member}'`, [first_name,last_name,email,username,hash,role])
         } else {
-            await db.query(`update tb_member set first_name=?,last_name=?,email=?,username=?,role=? where id_member='${id_member}'`, [first_name, last_name, email, username, role])
+            await db.query(`update tb_member set first_name=?,last_name=?,email=?,username=?,role=? where id_member='${id_member}'`, [first_name,last_name,email,username,role])
         }
         res.json({ message: `Update success` })
     } catch (error) {

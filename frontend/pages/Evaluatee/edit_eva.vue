@@ -35,7 +35,7 @@
                             <v-row>
                                 <v-col cols="12" md="12">
                                     <center>
-                                        <v-btn class="text-center ma-2" type="submit" color="primary">สมัครสมาชิก</v-btn>
+                                        <v-btn class="text-center ma-2" type="submit" @click="reload" color="primary">แก้ไข</v-btn>
                                         <v-btn class="text-center ma-2" type="reset" color="error">ยกเลิก</v-btn>
                                     </center>
                                 </v-col>
@@ -78,23 +78,26 @@ const form = ref(
 const emailRegex = /^[^\s]+@[^\s]+\.+[^\s]{2,}$/i
 
 function validateForm(){
-    error.value = {}
+
     const f = form.value
+    error.value = {}
 
     if(!f.first_name.trim())error.value.first_name = 'กรุณากรอกชื่อ'
     if(!f.last_name.trim())error.value.last_name = 'กรุณากรอกนามสกุล'
     if(!f.email.trim())error.value.email = 'กรุณากรอกอีเมล'
-    else if(!emailRegex.test(f.email.trim()))error.value.email = 'กรุณากรอกอีเมลให้ถูกต้อง'
-    if(!f.username.trim())error.value.username = 'กรุณากรอกชื่อผู้ใช้'
-    else if(f.last_name.trim().length < 4)error.value.username = 'ชื่อผู้ใช้ต้องยาวอย่างน้อย 4 ตัวอักษร'
-    
+    else if(!emailRegex.test(f.email.trim()) )error.value.email = 'กรุณากรอกอีเมลให้ถูกต้อง'
+
+    if(!f.username.trim())error.value.username = 'กรุณากรอกชื่อผู้ใช้งาน'
+    else if(f.username.trim().length < 4)error.value.username = 'ชื่อผู้ใช้งานต้องยาวอย่างน้อย 4 ตัวอักษร'
+
     if(f.password && f.password.trim()){
         if(f.password.trim().length < 6)error.value.password='ต้องมีอย่างน้อย 6 ตัวอักษร'
         if(!conP.value.trim())error.value.confirmPassword='กรุณายืนยันรหัสผ่าน'
         else if(conP.value.trim() != f.password.trim())error.value.confirmPassword='รหัสผ่านไม่ตรงกัน'
     }
-    
+
     return Object.keys(error.value).length === 0
+
 }
 
 const saveMember = async()=>{
@@ -102,7 +105,7 @@ const saveMember = async()=>{
     if(!validateForm())return
     try {
         
-        await axios.put(`${eva}}/edit_eva/`,form.value,{headers:{Authorization:`Bearer ${token}`}})
+        await axios.put(`${eva}/edit_eva`,form.value,{headers:{Authorization:`Bearer ${token}`}})
         alert('แก้ไขสำเร็จ')
         window.location.reload()
 
@@ -121,6 +124,10 @@ const fetch = async()=>{
     }
 }
 onMounted(fetch)
+
+const reload = async()=>{
+    window.location.reload()
+}
 </script>
 
 <style scoped>
