@@ -20,6 +20,9 @@ app.use('/api/auth',auth)
 const pf = require('./routes/profile')
 app.use('/api/profile',pf)
 
+const dash = require('./routes/dash')
+app.use('/api/dash',dash)
+
 //staf api
 
 const member = require('./routes/Staff/member')
@@ -45,6 +48,12 @@ app.use('/api/Staff/doc',doc)
 
 const score_member6 = require('./routes/Staff/score_member')
 app.use('/api/Staff/score_member',score_member6)
+
+const score_commit6 = require('./routes/Staff/score_commit')
+app.use('/api/Staff/score_commit',score_commit6)
+
+const status = require('./routes/Staff/status')
+app.use('/api/Staff/status',status)
 
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{

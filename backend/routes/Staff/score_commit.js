@@ -33,17 +33,37 @@ router.get('/topic/:id_eva',verifyToken,requireRole('ฝ่ายบุคลา
 
 router.get('/scores/:id_eva',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
-        const id_eva = req.params.id_eva
-        const [topics] = await db.query(`select * from tb_topic`)
-        const [indicates] = await db.query(`select * from tb_indicate i,tb_evadetail d where i.id_indicate=d.id_indicate and status_eva in (1) and id_eva=?`,[id_eva])
-        const result = topics.map(t =>({
-            ...t,
-            indicates:indicates.filter((i) => i.id_topic === t.id_topic)
-        }))
-        res.json(result)
+        const {id_eva} = req.params
+        const [rows] = await db.query(`select * from tb_indicate i,tb_evadetail d where i.id_indicate = d.id_indicate and status_eva in (2,3,4) and id_eva = ?`,[id_eva])
+        const scores = {}
+        rows.map(row =>{
+            if(!scores[row.id_indicate]){
+                scores[row.id_indicate] = {
+                    a:null,
+                    b:null,
+                    c:null
+                }
+            }
+            if(row.status_eva === 2)scores[row.id_indicate].a = row.score_commit * row.point_indicate
+            if(row.status_eva === 3)scores[row.id_indicate].b = row.score_commit * row.point_indicate 
+            if(row.status_eva === 4)scores[row.id_indicate].c = row.score_commit * row.point_indicate 
+        })
+        res.json({scores})
     }catch(err){
         console.error("Error GET User",err)
         res.status(500).json({message:'Error GET User'})
+    }
+})
+
+router.get('/commit/:id_eva',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
+    try {
+        
+        const {id_eva} = req.params
+        const [rows] = await db.query(`select * from tb_member m,tb_commit c,tb_eva e where c.id_eva = ? and c.id_eva = e.id_eva and c.id_member = m.id_member`,[id_eva])
+        res.json(rows,{message:'commit success'})
+    } catch (error) {
+        console.error("Error GET commit",err)
+        res.status(500).json({message:'Error GET commit'})
     }
 })
 

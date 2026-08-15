@@ -44,7 +44,7 @@
                         <v-card class="pa-2">
                             <h3>ข้อเสนอแนะของกรรมการประเมิน</h3>
                             <v-row>
-                                <v-col cols="12" md="12" v-for="(c,index) in commit">{{ index+1 }}.{{ c.level_commit }}:{{ c.detail_commit }}</v-col>
+                                <v-col cols="12" md="12" v-for="(c,index) in commit">{{ index+1 }}.{{ c.level_commit }}: {{ c.detail_commit || 'รอการประเมิน' }}</v-col>
                             </v-row>
                         </v-card>
                     </div>
@@ -104,7 +104,7 @@ const fetchScores = async () =>{
     const token = localStorage.getItem('token')
     try{
         const res = await axios.get(`${staff}/score_commit/scores/${id_eva}`,{headers:{Authorization:`Bearer ${token}`}})
-        scores.value = res.data
+        scores.value = res.data.scores
     }catch(err){
         console.error('Error Get Profile!',err)
     }

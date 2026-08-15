@@ -2,7 +2,7 @@
     <v-container>
         <v-row justify="center">
             <v-col cols="12" md="12">
-                <v-sheet class="pa-2">
+                <v-sheet class="pa-2" elevation="5">
                     <h1 class="text-center">DashBoard-Staff</h1>
                     <v-row>
                         <v-col cols="12" md="4" v-for="b in box" :key="b">
