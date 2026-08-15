@@ -68,7 +68,7 @@ CREATE TABLE `tb_eva` (
 
 LOCK TABLES `tb_eva` WRITE;
 /*!40000 ALTER TABLE `tb_eva` DISABLE KEYS */;
-INSERT INTO `tb_eva` VALUES (1,1,1,1,'2025-05-06',NULL,NULL);
+INSERT INTO `tb_eva` VALUES (1,1,1,2,'2025-05-06',26.00,NULL);
 /*!40000 ALTER TABLE `tb_eva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,6 +96,7 @@ CREATE TABLE `tb_evadetail` (
 
 LOCK TABLES `tb_evadetail` WRITE;
 /*!40000 ALTER TABLE `tb_evadetail` DISABLE KEYS */;
+INSERT INTO `tb_evadetail` VALUES (1,1,'1','มีปัญหา',NULL,NULL,'17867767715533v9qt8syras.png'),(1,2,'1','ห๊ะ!!!',NULL,NULL,'1786776771561aeru20iwcbw.png'),(1,3,'1','อารายยย',NULL,NULL,'1786776771561r0e5osfkeaj.png'),(1,1,'1','มีปัญหา',NULL,NULL,'17867768544290zrki20nk2x9.png'),(1,2,'1','ห๊ะ!!!',NULL,NULL,'17867768544363r2nr3w3rkw.png'),(1,3,'1','อารายยย',NULL,NULL,'1786776854436ziy38yn2x3.png'),(1,1,'1','มีปัญหา',NULL,NULL,'1786776874772r9hyubewaxm.png'),(1,2,'1','ห๊ะ!!!',NULL,NULL,'1786776874783bw9dz70qw26.png'),(1,3,'1','อารายยย',NULL,NULL,'1786776874783sb3lbhlab9r.png'),(1,1,'1','ไม่เชื่อนะ',3,NULL,'1786777081457foc3emdnsc7.png'),(1,2,'1','ผักอะไรดี',2,NULL,'1786777081480tq956oksn8.png'),(1,3,'1','ผักอะไรมีมารยาท',3,NULL,'1786777081481fxqa74iqtno.png');
 /*!40000 ALTER TABLE `tb_evadetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-08-15 13:12:03
+-- Dump completed on 2026-08-15 14:24:15
