@@ -17,7 +17,6 @@
                                     <th class="bg-grey border pa-1" style="width: 10%;">รายละเอียดตัวชี้วัด</th>
                                     <th class="bg-grey border pa-1" style="width: 10%;">น้ำหนักคะแนน</th>
                                     <th class="bg-grey border pa-1" style="width: 10%;">คะแนนเต็ม</th>
-                                    <th class="bg-grey border pa-1" style="width: 10%;">รายละเอียดแบบประเมิน</th>
                                     <th class="bg-grey border pa-1" style="width: 10%;">ประธาน</th>
                                     <th class="bg-grey border pa-1" style="width: 10%;">กรรมการ</th>
                                     <th class="bg-grey border pa-1" style="width: 10%;">เลขา</th>
@@ -28,7 +27,6 @@
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ indicate.detail_indicate }}</td>
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ indicate.point_indicate }}</td>
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ indicate.point_indicate*4 }}</td>
-                                    <td class="border pa-1 text-center" style="width: 10%;">{{ indicate.detail_eva || '-' }}</td>
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?.a ?? 'รอประธานประเมิน' }}</td>
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?.b ?? 'รอกรรมการประเมิน' }}</td>
                                     <td class="border pa-1 text-center" style="width: 10%;">{{ scores[indicate.id_indicate]?.c ?? 'รอเลขาประเมิน' }}</td>

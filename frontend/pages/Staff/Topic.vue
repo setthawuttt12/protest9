@@ -39,8 +39,8 @@
                                 <td class="border text-center">{{ items.name_topic }}</td>
                                 <td class="border text-center">
                                     <center>
-                                        <v-btn class="text-center ms-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
-                                        <v-btn class="text-center ms-1" color="error" size="small" @click="del(items.id_topic)">ลบ</v-btn>
+                                        <v-btn class="text-center ma-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
+                                        <v-btn class="text-center ma-1" color="error" size="small" @click="del(items.id_topic)">ลบ</v-btn>
                                     </center>
                                 </td>
                             </tr>

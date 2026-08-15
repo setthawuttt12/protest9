@@ -20,7 +20,7 @@ router.put('/update/:id_indicate',verifyToken,requireRole('ฝ่ายบุค
         const {id_topic,name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
         const {id_indicate} = req.params
 
-        const [rows] = await db.query(`update tb_indicate set id_topic=?,name_indicate=?,detail_indicate=?,point_indicate=?,check_indicate=? where id_indicate=?`,[name_topic,id_indicate])
+        const [rows] = await db.query(`update tb_indicate set id_topic=?,name_indicate=?,detail_indicate=?,point_indicate=?,check_indicate=? where id_indicate=?`,[id_topic,name_indicate,detail_indicate,point_indicate,check_indicate,id_indicate])
         res.json(rows,{message:'update indicate succesful'})
         
         

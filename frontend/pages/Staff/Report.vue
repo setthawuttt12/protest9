@@ -19,7 +19,7 @@
                                     <td class="border text-center">รายงานผู้รับการประเมิน</td>
                                     <td class="border text-center">
                                         <center>
-                                            <nuxt-link to="/Staff/Re_eva"><v-btn class="text-center ms-1" color="info" size="small">รายละเอียด</v-btn></nuxt-link>
+                                            <nuxt-link to="/Staff/Re_eva"><v-btn class="text-center ma-1" color="info" size="small">รายละเอียด</v-btn></nuxt-link>
                                         </center>
                                     </td>
                                 </tr>

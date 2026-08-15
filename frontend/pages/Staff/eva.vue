@@ -48,13 +48,13 @@
                                 <td class="border text-center">{{ items.day_eva }}</td>
                                 <td class="border text-center">
                                     <center>
-                                        <v-btn class="text-center ms-1" color="success" size="small" @click="go(items.id_eva)">เพิ่มกรรมการ</v-btn>
+                                        <v-btn class="text-center ma-1" color="success" size="small" @click="go(items.id_eva)">เพิ่มกรรมการ</v-btn>
                                     </center>
                                 </td>
                                 <td class="border text-center">
                                     <center>
-                                        <v-btn class="text-center ms-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
-                                        <v-btn class="text-center ms-1" color="error" size="small" @click="del(items.id_eva)">ลบ</v-btn>
+                                        <v-btn class="text-center ma-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
+                                        <v-btn class="text-center ma-1" color="error" size="small" @click="del(items.id_eva)">ลบ</v-btn>
                                     </center>
                                 </td>
                             </tr>

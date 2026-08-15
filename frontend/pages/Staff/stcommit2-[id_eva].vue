@@ -19,7 +19,7 @@
                                     <td class="border text-center">{{ items.first_name }} {{ items.last_name }}</td>
                                     <td class="border text-center">
                                         <center>
-                                            <v-btn class="text-center ms-1" :color="bg(items.status_commit)" size="small">{{ items.status_commit === 'y' ? 'ประเมินแล้ว' : 'ยังได้ประเมิน'}}</v-btn>
+                                            <v-btn class="text-center ma-1" :color="bg(items.status_commit)" size="small">{{ items.status_commit === 'y' ? 'ประเมินแล้ว' : 'ยังได้ประเมิน'}}</v-btn>
                                         </center>
                                     </td>
                                 </tr>

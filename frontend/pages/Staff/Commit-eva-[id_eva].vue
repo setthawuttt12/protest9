@@ -47,7 +47,7 @@
                                 <td class="border text-center">{{ items.role }}</td>
                                 <td class="border text-center">
                                     <center>
-                                        <v-btn class="text-center ms-1" color="error" size="small" @click="del(items.id_commit)">ลบ</v-btn>
+                                        <v-btn class="text-center ma-1" color="error" size="small" @click="del(items.id_commit)">ลบ</v-btn>
                                     </center>
                                 </td>
                             </tr>

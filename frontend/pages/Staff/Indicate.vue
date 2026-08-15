@@ -59,8 +59,8 @@
                                 <td class="border text-center">{{ items.check_indicate === 'y' ? 'มี' : 'ไม่มี' }}</td>
                                 <td class="border text-center">
                                     <center>
-                                        <v-btn class="text-center ms-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
-                                        <v-btn class="text-center ms-1" color="error" size="small" @click="del(items.id_indicate)">ลบ</v-btn>
+                                        <v-btn class="text-center ma-1" color="warning" size="small" @click="edit(items)">แก้ไข</v-btn>
+                                        <v-btn class="text-center ma-1" color="error" size="small" @click="del(items.id_indicate)">ลบ</v-btn>
                                     </center>
                                 </td>
                             </tr>
@@ -121,7 +121,6 @@ function validateForm(){
     if(!f.id_topic)error.value.id_topic = 'กรุณาเลือกหัวข้อการประเมิน'
 
     if(!f.name_indicate.trim())error.value.name_indicate = 'กรุณากรอกชื่อตัวชี้วัด'
-    if(!f.detail_indicate.trim())error.value.detail_indicate = 'กรุณากรอกรายละเอียดตัวชี้วัด'
     if(!f.point_indicate)error.value.point_indicate = 'กรุณาเลือกน้ำหนักคะแนน'
     if(!f.check_indicate)error.value.check_indicate = 'กรุณาเลือกประเภทตัวเลือก'
 
@@ -134,7 +133,7 @@ const saveMember = async()=>{
     try {
         
 
-        f.id_topic
+        f.id_indicate
         ? await axios.put(`${staff}/indicate/update/${f.id_indicate}`,form.value,{headers:{Authorization:`Bearer ${token}`}})
         : await axios.post(`${staff}/indicate/save`,form.value,{headers:{Authorization:`Bearer ${token}`}})
         alert('ทำรายการสำเร็จ')
@@ -167,7 +166,8 @@ const result = computed(()=>{
 
     return dataResult.value.filter((item:any)=>{
         return(
-            item.name_indicate?.toLowerCase().includes(s)
+            item.name_indicate?.toLowerCase().includes(s) ||
+            item.name_topic?.toLowerCase().includes(s)
         )
     })
 })

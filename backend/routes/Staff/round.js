@@ -6,8 +6,8 @@ const {verifyToken,requireRole} = require('../../middleware/authmiddleware')
 
 router.post('/save',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
-        const {day_open,day_close,round_sys,year_sys,status_sys} = req.body
-        const [rows] = await db.query(`insert into tb_system(day_open,day_close,round_sys,year_sys,status_sys) values(?,?,?,?,?)`,[day_open,day_close,round_sys,year_sys,status_sys])
+        const {day_open,day_out,round_sys,year_sys,status_sys} = req.body
+        const [rows] = await db.query(`insert into tb_system(day_open,day_out,round_sys,year_sys,status_sys) values(?,?,?,?,?)`,[day_open,day_out,round_sys,year_sys,status_sys])
         res.json(rows,{message:'save round succesful'})
     } catch (error) {
         console.error("Error save round",error)
@@ -17,10 +17,10 @@ router.post('/save',verifyToken,requireRole('ฝ่ายบุคลากร')
 
 router.put('/update/:id_sys',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
-        const {day_open,day_close,round_sys,year_sys,status_sys} = req.body
+        const {day_open,day_out,round_sys,year_sys,status_sys} = req.body
         const {id_sys} = req.params
 
-        const [rows] = await db.query(`update tb_system set day_open=?,day_close=?,round_sys=?,year_sys=?,status_sys=? where id_sys=?`,[day_open,day_close,round_sys,year_sys,status_sys,id_sys])
+        const [rows] = await db.query(`update tb_system set day_open=?,day_out=?,round_sys=?,year_sys=?,status_sys=? where id_sys=?`,[day_open,day_out,round_sys,year_sys,status_sys,id_sys])
         res.json(rows,{message:'update round succesful'})
         
         

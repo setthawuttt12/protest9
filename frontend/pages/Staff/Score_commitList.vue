@@ -27,7 +27,7 @@
                                     </td>
                                     <td class="border text-center">
                                         <center>
-                                            <v-btn class="text-center ms-1" color="info" size="small" @click="go(items.id_eva)">รายละเอียด</v-btn>
+                                            <v-btn class="text-center ma-1" color="info" size="small" @click="go(items.id_eva)">รายละเอียด</v-btn>
                                         </center>
                                     </td>
                                 </tr>

@@ -23,7 +23,7 @@
                                     <td class="border text-center">{{ items.day_eva }}</td>
                                     <td class="border text-center">
                                         <center>
-                                            <v-btn class="text-center ms-1" :color="bg(items.status_eva)" size="small">{{ items.status_eva === 1 ? 'รอการประเมินตนเอง' : items.status_eva === 2 ? 'รอกรรมการประเมิน' : 'ประเมินสำเร็จ' }}</v-btn>
+                                            <v-btn class="text-center ma-1" :color="bg(items.status_eva)" size="small">{{ items.status_eva === 1 ? 'รอการประเมินตนเอง' : items.status_eva === 2 ? 'รอกรรมการประเมิน' : 'ประเมินสำเร็จ' }}</v-btn>
                                         </center>
                                     </td>
                                 </tr>

@@ -4,8 +4,8 @@
             <v-app-bar-nav-icon @click="drawer = !drawer"/>
             <v-toolbar-title>NTC EVALUATION SYSTEM</v-toolbar-title>
             <spacer/>
-
-            <p class="text-center">ผู้ใช้งาน : {{ user.first_name }} {{ user.last_name }} <br> {{ user.role }}</p>&nbsp;&nbsp;
+            <v-avatar :image="`${pic_folder}/${user.pic_user}`"></v-avatar>
+            <p class="text-center ms-4">ผู้ใช้งาน : {{ user.first_name }} {{ user.last_name }} <br> {{ user.role }}</p>&nbsp;&nbsp;
             <v-btn icon="mdi-logout" @click="logout" variant="text" />&nbsp;&nbsp;
         </v-app-bar>
 
@@ -40,6 +40,7 @@ const isMobile = computed(()=> mdAndDown.value)
 
 const drawer = ref(false)
 const user = ref<any>({})
+const pic_folder = 'http://localhost:3001/uploads/pic_user'
 
 const logout = async()=>{
     if(!confirm('ท่านต้องการออกจากระบบใช่หรือไม่'))return
