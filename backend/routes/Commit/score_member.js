@@ -10,7 +10,8 @@ router.get('/user/:id_eva',verifyToken,requireRole('กรรมการปร�
         const id_eva = req.params.id_eva
         const [rows] = await db.query(`select * from tb_member m,tb_eva e,tb_system s,tb_commit c where c.id_member=? and c.id_eva=? and c.id_eva=e.id_eva and e.id_member=m.id_member and e.id_sys=s.id_sys order by e.id_eva desc`,[id_member,id_eva])
     } catch (error) {
-        
+        console.error("Error GET User",err)
+        res.status(500).json({message:'Error GET User'})
     }
 })
 
