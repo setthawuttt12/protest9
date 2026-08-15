@@ -9,4 +9,4 @@ const db = mysql2.createConnection(
     }
 )
 
-module.exports = db.promise
+module.exports = db.promise()

@@ -13,7 +13,7 @@
                                     <v-text-field label="ชื่อ" v-model="form.first_name" :error-messages="error.first_name" prepend-inner-icon="mdi-alpha-f"></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6">
-                                    <v-text-field label="นามสกุล" v-model="form.last_name" :error-messages="error.last_name" prepend-inner-icon="mdi-alpha-"></v-text-field>
+                                    <v-text-field label="นามสกุล" v-model="form.last_name" :error-messages="error.last_name" prepend-inner-icon="mdi-alpha-l"></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6">
                                     <v-text-field label="อีเมล" v-model="form.email" :error-messages="error.email" prepend-inner-icon="mdi-email"></v-text-field>
@@ -43,7 +43,7 @@
                                 </v-col>
                             </v-row>
                         </v-form>
-                        <nuxt-link class="text-blue text-decoration-none" to="/"><p>หากมีบัญชีอยู่แล้ว? เข้าสู่ระบบ</p></nuxt-link>
+                        <nuxt-link class="text-blue text-center text-decoration-none" to="/"><p>หากมีบัญชีอยู่แล้ว? เข้าสู่ระบบ</p></nuxt-link>
                     </v-card-text>
                 </v-card>
             </v-col>

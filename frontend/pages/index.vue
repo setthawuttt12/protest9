@@ -16,7 +16,7 @@
                                 <v-col cols="12" md="12">
                                     <v-text-field label="รหัสผ่าน" v-model="password" :error-messages="error.password" :prepend-inner-icon="show ? 'mdi-eye':'mdi-eye-off'" :type="showPw ? 'text':'password'" @click:prepend-inner="show = !show , showPw = !showPw"></v-text-field>
                                 </v-col>
-                                <v-col cols="12" md="6">
+                                <v-col cols="12" md="12">
                                     <v-select label="ประเภทสมาชิก" v-model="role" :error-messages="error.role" prepend-inner-icon="mdi-account-group" :items="typeR"></v-select>
                                 </v-col>
                             </v-row>
@@ -29,7 +29,7 @@
                                 </v-col>
                             </v-row>
                         </v-form>
-                        <nuxt-link class="text-blue text-decoration-none" to="/"><p>หากไม่มีบัญชีอยู่? เข้าสู่ระบบ</p></nuxt-link>
+                        <nuxt-link class="text-blue text-center text-decoration-none" to="/regis"><p>หากไม่มีบัญชีอยู่? เข้าสู่ระบบ</p></nuxt-link>
                     </v-card-text>
                 </v-card>
             </v-col>
