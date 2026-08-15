@@ -64,7 +64,6 @@ router.post('/save/:id_eva',verifyToken,requireRole('กรรมการปร
         )
         await db.query(`update tb_eva set total_commit=? where id_eva=?`,[sumRow.total,id_eva])
         await db.query(`update tb_commit set detail_commit=?,status_commit=? where id_eva=? and id_member=?`,[detail_commit,'y',id_eva,id_member])
-        
         res.json({message:'POST Score Success'})
     }catch(err){
         console.error("Error POST Score",err)
