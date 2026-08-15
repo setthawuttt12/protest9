@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar>
+        <v-app-bar :color="bg(user.role)" flat>
             <v-app-bar-nav-icon @click="drawer = !drawer"/>
             <v-toolbar-title>NTC EVALUATION SYSTEM</v-toolbar-title>
             <spacer/>
@@ -70,12 +70,12 @@ const roles = [
     {title:'ตรวจสอบผลและยืนยัน',to:'/Committee/check_confirm',role:'กรรมการประเมิน'},
     {title:'เอกสารประกอบการประเมิน',to:'/Committee/Doc',role:'กรรมการประเมิน'},
 
-    {title:'หน้าหลัก',to:'/Evalautee/',role:'ผู้รับการประเมินผล'},
-    {title:'แก้ไขข้อมูลส่วนตัว',to:'/Evalautee/edit_eva',role:'ผู้รับการประเมินผล'},
-    {title:'แบบประเมินตนเอง',to:'/Evalautee/self_eva',role:'ผู้รับการประเมินผล'},
-    {title:'ตรวจสอบผลการประเมิน',to:'/Evalautee/check_score',role:'ผู้รับการประเมินผล'},
-    {title:'รายงานผลการประเมิน',to:'/Evalautee/report_eva',role:'ผู้รับการประเมินผล'},
-    {title:'เอกสารประกอบการประเมิน',to:'/Committee/Doc',role:'ผู้รับการประเมินผล'},
+    {title:'หน้าหลัก',to:'/Evaluatee/',role:'ผู้รับการประเมินผล'},
+    {title:'แก้ไขข้อมูลส่วนตัว',to:'/Evaluatee/edit_eva',role:'ผู้รับการประเมินผล'},
+    {title:'แบบประเมินตนเอง',to:'/Evaluatee/self_eva',role:'ผู้รับการประเมินผล'},
+    {title:'ตรวจสอบผลการประเมิน',to:'/Evaluatee/check_score',role:'ผู้รับการประเมินผล'},
+    {title:'รายงานผลการประเมิน',to:'/Evaluatee/report_eva',role:'ผู้รับการประเมินผล'},
+    {title:'เอกสารประกอบการประเมิน',to:'/Evaluatee/Doc',role:'ผู้รับการประเมินผล'},
 ]
 
 const fetch = async()=>{
@@ -93,11 +93,11 @@ const fetch = async()=>{
 
 onMounted(fetch)
 
-// const bg = (role) =>{
-//     if(role === 'ฝ่ายบุคลากร')return '#647687'
-//     if(role === 'กรรมการประเมิน')return '#007FFF'
-//     if(role === 'ผู้รับการประเมินผล')return '#7d0c14'
-// }
+const bg = (role) =>{
+    if(role === 'ฝ่ายบุคลากร')return '#647687'
+    if(role === 'กรรมการประเมิน')return '#007FFF'
+    if(role === 'ผู้รับการประเมินผล')return '#7d0c14'
+}
 </script>
 
 <style scoped>
