@@ -43,6 +43,9 @@ app.use('/api/Staff/commit',commit)
 const doc = require('./routes/Staff/doc')
 app.use('/api/Staff/doc',doc)
 
+const score_member6 = require('./routes/Staff/score_member')
+app.use('/api/Staff/score_member',score_member6)
+
 app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
 app.listen(3001,()=>{
 
