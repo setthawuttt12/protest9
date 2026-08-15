@@ -37,8 +37,8 @@ app.use('/api/auth',auth)
  const score_commit2 = require('./routes/Commit/score_commit')
  app.use('/api/Commit/score_commit',score_commit2)
 
-//  const signature = require('./routes/Commit/signature')
-//  app.use('/api/Commit/signature',signature)
+  const signature = require('./routes/Commit/signature')
+  app.use('/api/Commit/signature',signature)
 
 
   const docnoe = require('./routes/docnoe')
