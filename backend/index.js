@@ -25,8 +25,8 @@ app.use('/api/auth',auth)
  const show_eva = require('./routes/Commit/show_eva')
  app.use('/api/Commit/show_eva',show_eva)
 
-// const check_confirm = require('./routes/Commit/check_confirm')
-// app.use('/api/Commit/check_confirm',check_confirm)
+ const check_confirm = require('./routes/Commit/check_confirm')
+ app.use('/api/Commit/check_confirm',check_confirm)
 
  const score_member2 = require('./routes/Commit/score_member')
  app.use('/api/Commit/score_member',score_member2)
