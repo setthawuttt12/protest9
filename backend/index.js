@@ -1,25 +1,27 @@
-require('dotenv').config({path:'.env'})
-const fileUp = require('express-fileupload')
+require('dotenv').config()
 const express = require('express')
-const cors = require('cors')
+const fileupload = require('express-fileupload')
 const path = require('path')
+const cors = require('cors')
 const app = express()
 
-app.use(cors({
-    origin:'http://localhost:3000',
-    credentials:true
+app.use(cors ({
+    origin: 'http://localhost:3000',
+    credentials: true
 }))
 
-app.use(fileUp())
-app.use('/uploads',express.static(path.join(__dirname,'./uploads')))
 app.use(express.json())
+app.use(fileupload())
+app.use('/uploads',express.static(path.join(__dirname,'uploads')))
 
+// Public Endpoint API ============
 const auth = require('./routes/auth')
 app.use('/api/auth',auth)
 
-app.use((req,res)=> res.status(404).json({message:"Route not Found"}))
-app.listen(3001,()=>{
+const profile = require('./routes/profile')
+app.use('/api/profile',profile)
 
-    console.log(`server Running on Port 3001`)
 
-})
+app.use((req,res) => res.status(404).json({message:'404 : Invalid Route55'}))
+app.listen(3001 , () => console.log("Server Running On Port 3001"))
+
