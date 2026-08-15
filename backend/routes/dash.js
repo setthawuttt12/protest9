@@ -22,7 +22,7 @@ router.get('/staff',verifyToken,requireRole('ฝ่ายบุคลากร')
             box2:[
                 {title:'จำนวนแบบประเมิน',value:evaCount.total || 0},
                 {title:'จำนวนแบบประเมินที่สำเร็จ',value:evaCount.total > 0 ? `${(evaY.total * 100 / evaCount.total).toFixed(2)}%`:'00.00%'},
-                {title:'จำนวนแบบประเมินที่"ฒ๋สำเร็จ',value:evaCount.total > 0 ? `${(evaN.total * 100 / evaCount.total).toFixed(2)}%`:'00.00%'},
+                {title:'จำนวนแบบประเมินที่ไม่สำเร็จ',value:evaCount.total > 0 ? `${(evaN.total * 100 / evaCount.total).toFixed(2)}%`:'00.00%'},
             ]
         })
 
