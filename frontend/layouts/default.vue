@@ -4,9 +4,22 @@
             <v-app-bar-nav-icon @click="drawer = !drawer"/>
             <v-toolbar-title>NTC EVALUATION SYSTEM</v-toolbar-title>
             <spacer/>
-            <v-avatar :image="`${pic_folder}/${user.pic_user}`"></v-avatar>
+            <v-btn class="pa-3"><v-avatar @click="dialog1 = true" :image="`${pic_folder}/${user.pic_user}`"></v-avatar></v-btn>
             <p class="text-center ms-4">ผู้ใช้งาน : {{ user.first_name }} {{ user.last_name }} <br> {{ user.role }}</p>&nbsp;&nbsp;
             <v-btn icon="mdi-logout" @click="logout" variant="text" />&nbsp;&nbsp;
+
+
+            <v-dialog v-model="dialog1" width="50%">
+                <v-card class="pa-5">
+                    <v-divider thickness="3"></v-divider>
+                    <v-card-title><h1 class="text-center">รูปภาพสมาชิก</h1></v-card-title>
+                    <v-divider thickness="3"  class="mb-5"></v-divider>
+                    <v-row justify="center">
+                        <v-col cols="12" md="6"><center><v-img :src="`${pic_folder}/${user.pic_user}`" rounded="lg" width="100%"></v-img></center></v-col>
+                    </v-row>
+                    <v-card-actions><v-btn block color="red" class="mt-5" @click="dialog1 = !dialog1" variant="flat">ปิด</v-btn></v-card-actions>
+                </v-card>
+            </v-dialog>
         </v-app-bar>
 
         <ClientOnly>
@@ -37,6 +50,7 @@ import { useDisplay } from 'vuetify/lib/composables/display.mjs';
 
 const {mdAndDown} = useDisplay()
 const isMobile = computed(()=> mdAndDown.value)
+const dialog1 = ref(false)
 
 const drawer = ref(false)
 const user = ref<any>({})

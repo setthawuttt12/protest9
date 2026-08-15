@@ -50,8 +50,8 @@
                         <tbody>
                             <tr v-for="(items,index) in result" :key="items.id_sys">
                                 <td class="border text-center">{{ index+1 }}</td>
-                                <td class="border text-center">{{ items.day_open }}</td>
-                                <td class="border text-center">{{ items.day_out }}</td>
+                                <td class="border text-center">{{ formatDate(items.day_open)  }}</td>
+                                <td class="border text-center">{{ formatDate(items.day_out)  }}</td>
                                 <td class="border text-center">{{ items.round_sys }}</td>
                                 <td class="border text-center">{{ items.year_sys }}</td>
                                 <td class="border text-center">{{ items.status_sys === 'y' ? 'เปิด' : 'ปิด' }}</td>
@@ -106,6 +106,15 @@ const reset = ()=>{
         year_sys:'',
         status_sys:''
     }
+}
+
+const formatDate = (dateStr:string)=>{
+    if(!dateStr)return '-'
+    const date = new Date(dateStr)
+    const day = String(date.getDay()).padStart(2,'0')
+    const month = String(date.getMonth()+1).padStart(2,'0')
+    const year = String(date.getFullYear())
+    return `${day}/${month}/${year}`
 }
 
 const emailRegex = /^[^\s]+@[^\s]+\.+[^\s]{2,}$/i

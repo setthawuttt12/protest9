@@ -7,7 +7,7 @@ const {verifyToken,requireRole} = require('../../middleware/authmiddleware')
 router.post('/save',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try {
         const {id_member,id_sys,day_eva} = req.body
-        const [rows] = await db.query(`insert into tb_indicate(id_member,id_sys,day_eva,status_eva) values(?,?,?,?)`,[id_member,id_sys,day_eva,1])
+        const [rows] = await db.query(`insert into tb_eva(id_member,id_sys,day_eva,status_eva) values(?,?,?,?)`,[id_member,id_sys,day_eva,1])
         res.json(rows,{message:'save eva succesful'})
     } catch (error) {
         console.error("Error save eva",error)

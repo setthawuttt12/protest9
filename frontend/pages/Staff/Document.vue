@@ -42,7 +42,7 @@
                             <tr v-for="(items,index) in result" :key="items.id_doc">
                                 <td class="border text-center">{{ index+1 }}</td>
                                 <td class="border text-center">{{ items.name_doc }}</td>
-                                <td class="border text-center">{{ items.day_doc }}</td>
+                                <td class="border text-center">{{ formatDate(items.day_doc)  }}</td>
                                 <td class="border text-center">
                                     <center>
                                         <v-btn class="text-center ma-1" color="info" prepend-icon="mdi-eye" size="small" @click="view(items.file)">เปิดดู</v-btn>
@@ -77,6 +77,15 @@ const search = ref('')
 const dataResult = ref([])
 
 const token = import.meta.client ? localStorage.getItem('token'):null
+
+const formatDate = (dateStr: string) => {
+    if (!dateStr) return '-'
+    const date = new Date(dateStr)
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
+}
 
 const saveMember = async()=>{
     if(!name_doc.value || !file.value)return alert('กรอกข้อมูลให้ครบถ้วน')

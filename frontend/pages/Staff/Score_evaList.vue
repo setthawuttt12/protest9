@@ -21,7 +21,7 @@
                                     <td class="border text-center">{{ index+1 }}</td>
                                     <td class="border text-center">{{ items.first_name }} {{ items.last_name }}</td>
                                     <td class="border text-center">รอบการประเมินที่:{{ items.round_sys }} ปี:{{ items.year_sys }}</td>
-                                    <td class="border text-center">{{ items.day_eva }}</td>
+                                    <td class="border text-center">{{formatDate(items.day_eva) }}</td>
                                     <td class="border text-center">
                                         {{ items.total_eva === null ? '-':items.total_eva }} คะแนน
                                     </td>
@@ -58,6 +58,15 @@ const search = ref('')
 const token = import.meta.client ? localStorage.getItem('token'):null
 const eva = ref([])
 const round = ref([])
+
+const formatDate = (dateStr: string) => {
+    if (!dateStr) return '-'
+    const date = new Date(dateStr)
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
+}
 
 const form = ref(
     {
